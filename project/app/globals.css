@@ -1,0 +1,362 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Nova Media Brand Colors - Emerald Theme */
+  --background: oklch(0.99 0.002 120);
+  --foreground: oklch(0.15 0.02 240);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.02 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.02 240);
+  --primary: oklch(0.5 0.2 160);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.6 0.18 160);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.96 0.01 120);
+  --muted-foreground: oklch(0.5 0.02 240);
+  --accent: oklch(0.65 0.2 160);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.6 0.25 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.92 0.01 120);
+  --input: oklch(1 0 0);
+  --ring: oklch(0.5 0.2 160 / 0.5);
+  
+  /* Chart Colors */
+  --chart-1: oklch(0.5 0.2 160);
+  --chart-2: oklch(0.6 0.18 160);
+  --chart-3: oklch(0.15 0.02 240);
+  --chart-4: oklch(0.96 0.01 120);
+  --chart-5: oklch(1 0 0);
+  
+  /* Layout */
+  --radius: 0.5rem;
+  
+  /* Sidebar */
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.15 0.02 240);
+  --sidebar-primary: oklch(0.96 0.01 120);
+  --sidebar-primary-foreground: oklch(0.15 0.02 240);
+  --sidebar-accent: oklch(0.6 0.18 160);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(0.92 0.01 120);
+  --sidebar-ring: oklch(0.5 0.2 160 / 0.5);
+}
+
+.dark {
+  --background: oklch(0.08 0.005 240);
+  --foreground: oklch(0.95 0.01 120);
+  --card: oklch(0.1 0.005 240);
+  --card-foreground: oklch(0.95 0.01 120);
+  --popover: oklch(0.1 0.005 240);
+  --popover-foreground: oklch(0.95 0.01 120);
+  --primary: oklch(0.6 0.18 160);
+  --primary-foreground: oklch(0.08 0.005 240);
+  --secondary: oklch(0.2 0.01 240);
+  --secondary-foreground: oklch(0.95 0.01 120);
+  --muted: oklch(0.15 0.01 240);
+  --muted-foreground: oklch(0.7 0.01 120);
+  --accent: oklch(0.2 0.01 240);
+  --accent-foreground: oklch(0.95 0.01 120);
+  --destructive: oklch(0.6 0.25 25);
+  --destructive-foreground: oklch(0.95 0.01 120);
+  --border: oklch(0.2 0.01 240);
+  --input: oklch(0.15 0.01 240);
+  --ring: oklch(0.6 0.18 160 / 0.5);
+  
+  /* Dark Chart Colors */
+  --chart-1: oklch(0.6 0.18 160);
+  --chart-2: oklch(0.7 0.2 180);
+  --chart-3: oklch(0.8 0.15 70);
+  --chart-4: oklch(0.65 0.25 300);
+  --chart-5: oklch(0.7 0.2 20);
+  
+  /* Dark Sidebar */
+  --sidebar: oklch(0.12 0.005 240);
+  --sidebar-foreground: oklch(0.95 0.01 120);
+  --sidebar-primary: oklch(0.6 0.18 160);
+  --sidebar-primary-foreground: oklch(0.08 0.005 240);
+  --sidebar-accent: oklch(0.2 0.01 240);
+  --sidebar-accent-foreground: oklch(0.95 0.01 120);
+  --sidebar-border: oklch(0.2 0.01 240);
+  --sidebar-ring: oklch(0.6 0.18 160 / 0.5);
+}
+
+@theme inline {
+  /* Typography */
+  --font-sans: var(--font-mulish);
+  --font-heading: var(--font-manrope);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  /* Color Mappings */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
+  /* Chart Mappings */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  
+  /* Border Radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Sidebar Mappings */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Base Styles */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* ===========================
+   CHATBOT SPECIFIC STYLES
+   =========================== */
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+/* Animation Classes */
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s infinite;
+}
+
+/* Professional Chatbot Scrollbar */
+.chat-scrollbar {
+  --scrollbar-size: 6px;
+  --scrollbar-thumb: linear-gradient(180deg, #3b82f6, #2563eb);
+  --scrollbar-track: #f8fafc;
+  
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 transparent;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+}
+
+.chat-scrollbar::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+}
+
+.chat-scrollbar::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 10px;
+  margin: 8px 0;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #2563eb, #1d4ed8);
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.4);
+}
+
+/* Dark Mode Scrollbar */
+.dark .chat-scrollbar {
+  --scrollbar-thumb: linear-gradient(180deg, #60a5fa, #3b82f6);
+  --scrollbar-track: #1e293b;
+}
+
+.dark .chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #3b82f6, #2563eb);
+}
+
+/* Chatbot Window Styles */
+.chatbot-window {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+.chatbot-glass {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.dark .chatbot-glass {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Message Bubbles */
+.message-bubble {
+  transition: all 0.2s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.message-bubble:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Typing Indicator */
+.typing-indicator {
+  display: inline-flex;
+  gap: 4px;
+  padding: 12px 16px;
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #94a3b8;
+  animation: typing 1.4s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 80%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .chatbot-window {
+    width: calc(100vw - 2rem) !important;
+    right: 1rem !important;
+    left: 1rem !important;
+    bottom: 1rem !important;
+  }
+}
+
+@media (max-height: 700px) {
+  .chatbot-window {
+    max-height: 70vh !important;
+  }
+}
+
+@media (max-height: 500px) {
+  .chatbot-window {
+    max-height: 60vh !important;
+  }
+}
+
+/* Utility Classes */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shadow-glow {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+.hover-lift {
+  transition: transform 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Print Styles */
+@media print {
+  .chatbot-window,
+  .floating-chatbot-button {
+    display: none !important;
+  }
+}
