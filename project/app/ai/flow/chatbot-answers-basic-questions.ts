@@ -125,16 +125,19 @@ HƯỚNG DẪN TRẢ LỜI:
 
 `;
 
+import { getEnvVar, sanitizeForLog } from '../../../utils/env-validation';
+
 // Initialize Gemini AI
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY || '');
+const genAI = new GoogleGenerativeAI(getEnvVar('GOOGLE_AI_API_KEY'));
 
 export async function chatbotAnswersBasicQuestions(input: ChatbotAnswersBasicQuestionsInput): Promise<ChatbotAnswersBasicQuestionsOutput> {
   try {
     // Validate input
     const validatedInput = ChatbotAnswersBasicQuestionsInputSchema.parse(input);
     
-    if (!process.env.GOOGLE_AI_API_KEY) {
-      throw new Error('Google AI API key is not configured');
+    // Log sanitized input for debugging (only in development)
+    if (process.env.NODE_ENV === 'development') {
+      console.log('🤖 Chatbot Input:', sanitizeForLog(validatedInput));
     }
 
     // Get Gemini model
